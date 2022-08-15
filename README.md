@@ -1,7 +1,7 @@
 # SwiftUImage
 An easy way to show Local, Remote and System images with SwiftUI.
 
-<img width="1638" alt="CleanShot 2022-08-15 at 22 24 19@2x" src="https://user-images.githubusercontent.com/54872601/184653867-3672ce96-136a-4bda-ad4e-6ea16dd0bf71.png">
+<img width="2096" alt="CleanShot 2022-08-15 at 22 30 18@2x" src="https://user-images.githubusercontent.com/54872601/184654833-5a84173f-7ac7-4349-9e94-23cab12de9a2.png">
 
 ## Environment
 - Xcode 13 or above
