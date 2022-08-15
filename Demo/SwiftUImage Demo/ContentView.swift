@@ -22,7 +22,6 @@ struct ContentView: View {
             Text("Remote Image").bold()
             
             SwiftUImage(name: .constant("https://developer.apple.com/news/images/og/swiftui-og.png"))
-                .foregroundColor(.accentColor)
             
             Divider().padding()
             
