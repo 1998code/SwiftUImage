@@ -13,29 +13,47 @@ struct ContentView: View {
         VStack {
             Text("System Symbols (SF)").bold()
             
-            SwiftUImage(name: .constant("sf.globe"))
+            // Using native SwiftUI Image for system symbols
+            Image(systemName: "globe")
                 .foregroundColor(.accentColor)
-                .frame(width: 100, height: 100)
+                .font(.largeTitle)
+                .padding(25)
             
             Divider().padding()
             
-            Text("Remote Image").bold()
+            Text("Remote Image - Basic").bold()
             
-            SwiftUImage(name: .constant("https://developer.apple.com/news/images/og/swiftui-og.png"))
+            // Basic Image(url:) - just like AsyncImage
+            Image(url: "https://developer.apple.com/news/images/og/swiftui-og.png")
+            
+            Divider().padding()
+            
+            Text("Remote Image - Custom").bold()
+            
+            // Image(url:) with custom content and placeholder
+            Image(url: "https://developer.apple.com/news/images/og/swiftui-og.png") { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 100, height: 100)
             
             Divider().padding()
             
             Text("Local Image").bold()
             
-            SwiftUImage(name: .constant("applelogo"))
+            // Using native SwiftUI Image for local images
+            Image("applelogo")
+                .resizable()
+                .scaledToFit()
                 .frame(width: 100, height: 100)
         }
         .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

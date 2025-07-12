@@ -1,7 +1,14 @@
 # SwiftUImage
-An easy way to show Local, Remote and System images with SwiftUI.
+Enhanced SwiftUI Image with URL loading support using familiar Image syntax.
 
 <img width="2096" alt="CleanShot 2022-08-15 at 22 30 18@2x" src="https://user-images.githubusercontent.com/54872601/184654833-5a84173f-7ac7-4349-9e94-23cab12de9a2.png">
+
+## Features
+- 🌐 **URL Loading**: Load remote images with `Image(url: "...")`
+- 🔄 **AsyncImage Integration**: Full AsyncImage functionality with familiar syntax
+- 🎨 **Native Compatibility**: Works alongside standard SwiftUI Image
+- 📱 **Auto-scaling**: Automatic resizable and scaledToFit for basic usage
+- 🛠 **Customizable**: Support for custom content and placeholder views
 
 ## Environment
 - Xcode 13 or above
@@ -9,41 +16,117 @@ An easy way to show Local, Remote and System images with SwiftUI.
 - macOS 12 or above
 - watchOS 8 or above
 
+## Installation
+
+### Swift Package Manager
+```swift
+dependencies: [
+    .package(url: "https://github.com/1998code/SwiftUImage.git", from: "1.0.0")
+]
+```
+
 ## Usage
 
 ```swift
 import SwiftUImage
 ```
 
-### SF System Symbols (Start with `sf.`)
+### Remote Images - Basic Usage
+The simplest way to load remote images with automatic scaling:
+
 ```swift
-// SwiftUImage(name: .constant("sf.{STRING}"))
-SwiftUImage(name: .constant("sf.globe"))
+Image(url: "https://developer.apple.com/news/images/og/swiftui-og.png")
+    .frame(width: 200, height: 100)
 ```
 
-Expected Output:
+### Remote Images - Custom Content & Placeholder
+Full control over image rendering and loading state:
 
-<img width="115" alt="CleanShot 2022-08-15 at 22 31 43@2x" src="https://user-images.githubusercontent.com/54872601/184655085-c9e49480-85b5-454d-84a2-75a0daeac3cb.png">
-
-### Remote Image (Start with `http`)
 ```swift
-// SwiftUImage(name: .constant("{URL_STRING}"))
-SwiftUImage(name: .constant("https://developer.apple.com/news/images/og/swiftui-og.png"))
+Image(url: "https://example.com/icon.png") { image in
+    image
+        .resizable()
+        .scaledToFit()
+        .clipShape(Circle())
+} placeholder: {
+    ProgressView()
+        .scaleEffect(0.5)
+}
+.frame(width: 50, height: 50)
 ```
 
-Expected Output:
+### Remote Images - Custom Content Only
+Customize the loaded image with automatic ProgressView placeholder:
 
-<img width="142" alt="CleanShot 2022-08-15 at 22 31 58@2x" src="https://user-images.githubusercontent.com/54872601/184655132-b963279e-8f27-4fb9-9711-576f7fc1bdd7.png">
-
-### Local Image (Inside Assets Folder)
 ```swift
-// SwiftUImage(name: .constant("{STRING}"))
-SwiftUImage(name: .constant("applelogo"))
+Image(url: "https://example.com/image.png") { image in
+    image
+        .resizable()
+        .scaledToFill()
+}
+.frame(width: 100, height: 100)
+.clipped()
 ```
 
-Expected Output:
+### System Symbols (Standard SwiftUI)
+Use native SwiftUI syntax for system symbols:
 
-<img width="97" alt="CleanShot 2022-08-15 at 22 32 12@2x" src="https://user-images.githubusercontent.com/54872601/184655182-e5d7b975-2d7d-4a2d-8df3-721fadc6a71b.png">
+```swift
+Image(systemName: "globe")
+    .foregroundColor(.blue)
+    .font(.largeTitle)
+```
+
+### Local Images (Standard SwiftUI)
+Use native SwiftUI syntax for local images:
+
+```swift
+Image("applelogo")
+    .resizable()
+    .scaledToFit()
+    .frame(width: 100, height: 100)
+```
+
+## API Reference
+
+### `Image(url: String)`
+Basic URL loading with automatic resizable and scaledToFit behavior.
+
+### `Image(url: String, content: @ViewBuilder (Image) -> Content)`
+Load URL with custom image content transformation and automatic ProgressView placeholder.
+
+### `Image(url: String, content: @ViewBuilder (Image) -> Content, placeholder: @ViewBuilder () -> Placeholder)`
+Full control over both image content and loading placeholder.
+
+## Legacy API
+
+The original SwiftUImage API is still available for backward compatibility:
+
+```swift
+SwiftUImage(name: .constant("https://example.com/image.png"))
+SwiftUImage(name: "https://example.com/image.png") // Static convenience
+SwiftUImage(url: "https://example.com/image.png")  // URL convenience
+```
+
+## Migration Guide
+
+### From v1.x to v2.x
+
+**Old syntax:**
+```swift
+SwiftUImage(name: .constant("https://example.com/image.png"))
+```
+
+**New syntax:**
+```swift
+Image(url: "https://example.com/image.png")
+```
+
+**Benefits:**
+- Cleaner, more familiar syntax
+- Better integration with SwiftUI
+- More flexible customization options
+- Automatic sensible defaults
 
 ## Contribution
 Please raise an issue / pull request.
