@@ -21,7 +21,7 @@ Enhanced SwiftUI Image with URL loading support using familiar Image syntax.
 ### Swift Package Manager
 ```swift
 dependencies: [
-    .package(url: "https://github.com/1998code/SwiftUImage.git", from: "1.0.0")
+    .package(url: "https://github.com/1998code/SwiftUImage.git", from: "2.0.0")
 ]
 ```
 
