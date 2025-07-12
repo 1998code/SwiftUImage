@@ -1,7 +1,7 @@
 # SwiftUImage
 Enhanced SwiftUI Image with URL loading support using familiar Image syntax.
 
-<img width="2096" alt="CleanShot 2022-08-15 at 22 30 18@2x" src="https://user-images.githubusercontent.com/54872601/184654833-5a84173f-7ac7-4349-9e94-23cab12de9a2.png">
+<img width="1566" height="1349" alt="Screenshot 2025-07-12 at 4 51 25 PM" src="https://github.com/user-attachments/assets/577402b1-ac5b-4703-a774-4ad42b91167f" />
 
 ## Features
 - 🌐 **URL Loading**: Load remote images with `Image(url: "...")`
